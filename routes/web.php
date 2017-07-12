@@ -23,3 +23,7 @@ Route::group(['namespace' => 'Admin'],function(){
 	Route::resource('admin/category','CategoryController');
 });
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
