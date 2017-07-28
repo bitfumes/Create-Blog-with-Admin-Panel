@@ -45,7 +45,8 @@
                         <thead>
                         <tr>
                           <th>S.No</th>
-                          <th>permission Name</th>
+                          <th>Permission Name</th>
+                          <th>Permission For</th>
                           <th>Edit</th>
                           <th>Delete</th>
                         </tr>
@@ -55,6 +56,7 @@
                           <tr>
                             <td>{{ $loop->index + 1 }}</td>
                             <td>{{ $permission->name }}</td>
+                            <td>{{ $permission->for }}</td>
                               <td><a href="{{ route('permission.edit',$permission->id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>
                               <td>
                                 <form id="delete-form-{{ $permission->id }}" method="post" action="{{ route('permission.destroy',$permission->id) }}" style="display: none">
@@ -79,6 +81,7 @@
                         <tr>
                           <th>S.No</th>
                           <th>permission Name</th>
+                          <th>permission For</th>
                           <th>Edit</th>
                           <th>Delete</th>
                         </tr>

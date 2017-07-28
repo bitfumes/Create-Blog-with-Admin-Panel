@@ -8,10 +8,7 @@
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>
-      Blank page
-      <small>it all starts here</small>
-    </h1>
+    @include('admin.layouts.pagehead')
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
       <li><a href="#">Examples</a></li>
@@ -27,6 +24,7 @@
       <div class="box-header with-border">
         <h3 class="box-title">Users</h3>
         <a class='col-lg-offset-5 btn btn-success' href="{{ route('user.create') }}">Add New</a>
+        @include('includes.messages')
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip" title="Collapse">
             <i class="fa fa-minus"></i></button>
@@ -45,7 +43,8 @@
                         <thead>
                         <tr>
                           <th>S.No</th>
-                          <th>Tag Name</th>
+                          <th>User Name</th>
+                          <th>Assigned Roles</th>
                           <th>Edit</th>
                           <th>Delete</th>
                         </tr>
@@ -55,9 +54,14 @@
                           <tr>
                             <td>{{ $loop->index + 1 }}</td>
                             <td>{{ $user->name }}</td>
-                              <td><a href="{{ route('tag.edit',$user->id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>
+                            <td>
+                              @foreach ($user->roles as $role)
+                                {{ $role->name }},
+                              @endforeach
+                            </td>
+                              <td><a href="{{ route('user.edit',$user->id) }}"><span class="glyphicon glyphicon-edit"></span></a></td>
                               <td>
-                                <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('tag.destroy',$user->id) }}" style="display: none">
+                                <form id="delete-form-{{ $user->id }}" method="post" action="{{ route('user.destroy',$user->id) }}" style="display: none">
                                   {{ csrf_field() }}
                                   {{ method_field('DELETE') }}
                                 </form>
@@ -78,7 +82,8 @@
                         <tfoot>
                         <tr>
                           <th>S.No</th>
-                          <th>Tag Name</th>
+                          <th>User Name</th>
+                          <th>Assigned Roles</th>
                           <th>Edit</th>
                           <th>Delete</th>
                         </tr>
