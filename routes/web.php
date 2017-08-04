@@ -8,6 +8,10 @@ Route::group(['namespace' => 'User'],function(){
 
 	Route::get('post/tag/{tag}','HomeController@tag')->name('tag');
 	Route::get('post/category/{category}','HomeController@category')->name('category');
+
+	//vue routes
+	Route::post('getPosts','PostController@getAllPosts');
+	Route::post('saveLike','PostController@saveLike');
 });
 
 //Admin Routes
