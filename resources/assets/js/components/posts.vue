@@ -1,6 +1,6 @@
 <template>
     <div class="post-preview">
-        <a href="slug">
+        <a :href="slug">
             <h2 class="post-title">
                 {{ title }}
             </h2>
@@ -11,7 +11,8 @@
         <p class="post-meta">Posted by <a href="#">Start Bootstrap</a> {{ created_at }} 
             <a href="" @click.prevent="likeIt">
                 <small>{{ likeCount }}</small>
-                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-up" v-if="likeCount == 0" aria-hidden="true"></i>
+                <i class="fa fa-thumbs-up" style="color:red" v-else="likeCount > 0 " aria-hidden="true"></i>
             </a>
         </p>
     </div>
@@ -25,7 +26,7 @@
             }
         },
         props:[
-            'title','subtitle','created_at','postId','login','likes'
+            'title','subtitle','created_at','postId','login','likes','slug'
         ],
         created(){
             this.likeCount = this.likes

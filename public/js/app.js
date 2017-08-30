@@ -1669,6 +1669,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -1677,7 +1678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         };
     },
 
-    props: ['title', 'subtitle', 'created_at', 'postId', 'login', 'likes'],
+    props: ['title', 'subtitle', 'created_at', 'postId', 'login', 'likes', 'slug'],
     created: function created() {
         this.likeCount = this.likes;
     },
@@ -31784,7 +31785,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "post-preview"
   }, [_c('a', {
     attrs: {
-      "href": "slug"
+      "href": _vm.slug
     }
   }, [_c('h2', {
     staticClass: "post-title"
@@ -31806,8 +31807,16 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.likeIt($event)
       }
     }
-  }, [_c('small', [_vm._v(_vm._s(_vm.likeCount))]), _vm._v(" "), _c('i', {
+  }, [_c('small', [_vm._v(_vm._s(_vm.likeCount))]), _vm._v(" "), (_vm.likeCount == 0) ? _c('i', {
     staticClass: "fa fa-thumbs-up",
+    attrs: {
+      "aria-hidden": "true"
+    }
+  }) : _c('i', {
+    staticClass: "fa fa-thumbs-up",
+    staticStyle: {
+      "color": "red"
+    },
     attrs: {
       "aria-hidden": "true"
     }
